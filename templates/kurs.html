@@ -102,210 +102,31 @@
                         <div class="filter-sort">
                             <ul id="category_filter">
                                 <li data-uk-filter="" class="active"> Все  </li>
-                                <li data-uk-filter="1"> Веб-программирование </li>
-                                <li data-uk-filter="1"> Программирование </li>
-                                <li data-uk-filter="2"> Автоматизация</li>
-                                <li data-uk-filter="3"> Граф. дизайн </li>
-                                <li data-uk-filter="4"> Ком. грамотность </li>
-                                <li data-uk-filter="3"> Робототехники </li>
+                                {% for cat in catalogs %}
+                                <li data-uk-filter="{{ cat.id }}"> {{ cat.title }} </li>
+                                {% endfor %}
                             </ul>
                         </div><!-- ends: .filter-sort -->
                     </div><!-- ends: .col-lg-12 -->
 
                     <div class="col-lg-12">
                         <div class="row" data-uk-grid="{controls: '#category_filter'}" style="position: relative; height: 1435.1px;">
-                            <div class="filtr-item col-lg-4 col-md-6" data-uk-filter="1" data-grid-prepared="true" style="position: absolute; box-sizing: border-box; top: 0px; opacity: 1; left: 0px;">
-
-    <div class="card card-shadow card-one">
-        <figure>
-            <img src="img/c1.jpg" alt="">
-            <figcaption>
-                <a href=""><i class="la la-link"></i></a>
-            </figcaption>
-        </figure>
-        <div class="card-body">
-            <p class="card-subtitle color-secondary">Business Services</p>
-            <h6><a href="">Financial Sustainability</a></h6>
-        </div>
-    </div><!-- Ends: .card -->
-
+                            {% for co in courses %}
+                            <div class="filtr-item col-lg-4 col-md-6" data-uk-filter="{{ co.catalog.id }}" data-grid-prepared="true" style="position: absolute; box-sizing: border-box; top: 0px; opacity: 1; left: 0px;">
+                                <div class="card card-shadow card-one">
+                                    <figure>
+                                        <img src="/media/{{ co.logo }}" alt="">
+                                        <figcaption>
+                                            <a href=""><i class="la la-link"></i></a>
+                                        </figcaption>
+                                    </figure>
+                                    <div class="card-body">
+                                        <p class="card-subtitle color-secondary">{{ co.title }}</p>
+                                        <h6><a href="">{{ co.mini_description }}</a></h6>
+                                    </div>
+                                </div><!-- Ends: .card -->
                             </div><!-- ends: .col-lg-4 -->
-                            <div class="filtr-item col-lg-4 col-md-6" data-uk-filter="2, 1" data-grid-prepared="true" style="position: absolute; box-sizing: border-box; top: 0px; opacity: 1; left: 379.987px;">
-
-    <div class="card card-shadow card-one">
-        <figure>
-            <img src="img/c2.jpg" alt="">
-            <figcaption>
-                <a href=""><i class="la la-link"></i></a>
-            </figcaption>
-        </figure>
-        <div class="card-body">
-            <p class="card-subtitle color-secondary">Business Services</p>
-            <h6><a href="">Financial Sustainability</a></h6>
-        </div>
-    </div><!-- Ends: .card -->
-
-                            </div><!-- ends: .col-lg-4 -->
-                            <div class="filtr-item col-lg-4 col-md-6" data-uk-filter="3, 2" data-grid-prepared="true" style="position: absolute; box-sizing: border-box; top: 0px; opacity: 1; left: 759.974px;">
-
-    <div class="card card-shadow card-one">
-        <figure>
-            <img src="img/c3.jpg" alt="">
-            <figcaption>
-                <a href=""><i class="la la-link"></i></a>
-            </figcaption>
-        </figure>
-        <div class="card-body">
-            <p class="card-subtitle color-secondary">Business Services</p>
-            <h6><a href="">Financial Sustainability</a></h6>
-        </div>
-    </div><!-- Ends: .card -->
-
-                            </div><!-- ends: .col-lg-4 -->
-                            <div class="filtr-item col-lg-4 col-md-6" data-uk-filter="4, 3" data-grid-prepared="true" style="position: absolute; box-sizing: border-box; top: 358.775px; opacity: 1; left: 0px;">
-
-    <div class="card card-shadow card-one">
-        <figure>
-            <img src="img/c1.jpg" alt="">
-            <figcaption>
-                <a href=""><i class="la la-link"></i></a>
-            </figcaption>
-        </figure>
-        <div class="card-body">
-            <p class="card-subtitle color-secondary">Business Services</p>
-            <h6><a href="">Financial Sustainability</a></h6>
-        </div>
-    </div><!-- Ends: .card -->
-
-                            </div><!-- ends: .col-lg-4 -->
-                            <div class="filtr-item col-lg-4 col-md-6" data-uk-filter="2, 3" data-grid-prepared="true" style="position: absolute; box-sizing: border-box; top: 358.775px; opacity: 1; left: 379.987px;">
-
-    <div class="card card-shadow card-one">
-        <figure>
-            <img src="img/c2.jpg" alt="">
-            <figcaption>
-                <a href=""><i class="la la-link"></i></a>
-            </figcaption>
-        </figure>
-        <div class="card-body">
-            <p class="card-subtitle color-secondary">Business Services</p>
-            <h6><a href="">Financial Sustainability</a></h6>
-        </div>
-    </div><!-- Ends: .card -->
-
-                            </div><!-- ends: .col-lg-4 -->
-                            <div class="filtr-item col-lg-4 col-md-6" data-uk-filter="1, 4" data-grid-prepared="true" style="position: absolute; box-sizing: border-box; top: 358.775px; opacity: 1; left: 759.974px;">
-
-    <div class="card card-shadow card-one">
-        <figure>
-            <img src="img/c3.jpg" alt="">
-            <figcaption>
-                <a href=""><i class="la la-link"></i></a>
-            </figcaption>
-        </figure>
-        <div class="card-body">
-            <p class="card-subtitle color-secondary">Business Services</p>
-            <h6><a href="">Financial Sustainability</a></h6>
-        </div>
-    </div><!-- Ends: .card -->
-
-                            </div><!-- ends: .col-lg-4 -->
-                            <div class="filtr-item col-lg-4 col-md-6" data-uk-filter="2" data-grid-prepared="true" style="position: absolute; box-sizing: border-box; top: 717.55px; opacity: 1; left: 0px;">
-
-    <div class="card card-shadow card-one">
-        <figure>
-            <img src="img/c1.jpg" alt="">
-            <figcaption>
-                <a href=""><i class="la la-link"></i></a>
-            </figcaption>
-        </figure>
-        <div class="card-body">
-            <p class="card-subtitle color-secondary">Business Services</p>
-            <h6><a href="">Financial Sustainability</a></h6>
-        </div>
-    </div><!-- Ends: .card -->
-
-                            </div><!-- ends: .col-lg-4 -->
-                            <div class="filtr-item col-lg-4 col-md-6" data-uk-filter="3, 1" data-grid-prepared="true" style="position: absolute; box-sizing: border-box; top: 717.55px; opacity: 1; left: 379.987px;">
-
-    <div class="card card-shadow card-one">
-        <figure>
-            <img src="img/c2.jpg" alt="">
-            <figcaption>
-                <a href=""><i class="la la-link"></i></a>
-            </figcaption>
-        </figure>
-        <div class="card-body">
-            <p class="card-subtitle color-secondary">Business Services</p>
-            <h6><a href="">Financial Sustainability</a></h6>
-        </div>
-    </div><!-- Ends: .card -->
-
-                            </div><!-- ends: .col-lg-4 -->
-                            <div class="filtr-item col-lg-4 col-md-6" data-uk-filter="4, 2" data-grid-prepared="true" style="position: absolute; box-sizing: border-box; top: 717.55px; opacity: 1; left: 759.974px;">
-
-    <div class="card card-shadow card-one">
-        <figure>
-            <img src="img/c3.jpg" alt="">
-            <figcaption>
-                <a href=""><i class="la la-link"></i></a>
-            </figcaption>
-        </figure>
-        <div class="card-body">
-            <p class="card-subtitle color-secondary">Business Services</p>
-            <h6><a href="">Financial Sustainability</a></h6>
-        </div>
-    </div><!-- Ends: .card -->
-
-                            </div><!-- ends: .col-lg-4 -->
-                            <div class="filtr-item col-lg-4 col-md-6" data-uk-filter="1, 3" data-grid-prepared="true" style="position: absolute; box-sizing: border-box; top: 1076.32px; opacity: 1; left: 0px;">
-
-    <div class="card card-shadow card-one">
-        <figure>
-            <img src="img/c1.jpg" alt="">
-            <figcaption>
-                <a href=""><i class="la la-link"></i></a>
-            </figcaption>
-        </figure>
-        <div class="card-body">
-            <p class="card-subtitle color-secondary">Business Services</p>
-            <h6><a href="">Financial Sustainability</a></h6>
-        </div>
-    </div><!-- Ends: .card -->
-
-                            </div><!-- ends: .col-lg-4 -->
-                            <div class="filtr-item col-lg-4 col-md-6" data-uk-filter="4, 3" data-grid-prepared="true" style="position: absolute; box-sizing: border-box; top: 1076.32px; opacity: 1; left: 379.987px;">
-
-    <div class="card card-shadow card-one">
-        <figure>
-            <img src="img/c2.jpg" alt="">
-            <figcaption>
-                <a href=""><i class="la la-link"></i></a>
-            </figcaption>
-        </figure>
-        <div class="card-body">
-            <p class="card-subtitle color-secondary">Business Services</p>
-            <h6><a href="">Financial Sustainability</a></h6>
-        </div>
-    </div><!-- Ends: .card -->
-
-                            </div><!-- ends: .col-lg-4 -->
-                            <div class="filtr-item col-lg-4 col-md-6" data-uk-filter="1, 4" data-grid-prepared="true" style="position: absolute; box-sizing: border-box; top: 1076.32px; opacity: 1; left: 759.974px;">
-
-    <div class="card card-shadow card-one">
-        <figure>
-            <img src="img/c3.jpg" alt="">
-            <figcaption>
-                <a href=""><i class="la la-link"></i></a>
-            </figcaption>
-        </figure>
-        <div class="card-body">
-            <p class="card-subtitle color-secondary">Business Services</p>
-            <h6><a href="">Financial Sustainability</a></h6>
-        </div>
-    </div><!-- Ends: .card -->
-
-                            </div><!-- ends: .col-lg-4 -->
+                            {% endfor %}
                         </div>
                     </div><!-- ends: .filtr-container -->
                 </div>

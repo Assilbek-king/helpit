@@ -34,59 +34,6 @@
 <body>
     <!-- header area -->
     <section class="header header--2">
-        <div class="top_bar top--bar2 d-flex align-items-center bg-primary">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="d-flex topbar_content justify-content-between">
-                            <div class="top_bar--lang align-self-center order-2">
-                                <div class="dropdown">
-                                    <div class="dropdown-toggle d-flex align-items-center" id="dropdownMenuButton1" role="menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="lang">en</span>
-                                        <img class="lang_flag" src="{% static 'image/foto1/en.jpg' %}" alt="English">
-                                        <span class="la la-angle-down"></span>
-                                    </div>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <a class="dropdown-item" data-lang="fr" href="#"><img src="{% static 'image/foto1/en.jpg' %}" alt="">English</a>
-                                        <a class="dropdown-item" data-lang="en" href="#"><img src="{% static 'image/foto1/en.jpg' %}" alt="">Русский</a>
-                                    </div>
-                                </div>
-                                <div class="drop-down">
-                                    <div class="options">
-                                        <ul>
-                                            <li><a href="#">User1<span class="value">1</span></a></li>
-                                            <li><a href="#">User2<span class="value">2</span></a></li>
-                                            <li><a href="#">User3<span class="value">3</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="top_bar--info order-0 d-none d-lg-block align-self-center">
-                                <ul>
-                                    <li><span class="la la-envelope"></span>
-                                        <p>help-it@email.com</p>
-                                    </li>
-                                    <li><span class="la la-headphones"></span>
-                                        <p>+7 (708) 573 96 56</p>
-                                    </li>
-                                    <li><span class="la la-clock-o"></span>
-                                        <p>Nur +6.00</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="top_bar--social">
-                                <ul>
-                                    <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-whatsapp"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-instagram"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- start menu area -->
         <div class="menu_area menu1 menu--sticky">
             <div class="container">
@@ -103,13 +50,14 @@
                              <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Наша Компания</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="contact-1.html">О нас</a>
-                                    <a class="dropdown-item" href="team">Наша Команда</a>
+                                    <a class="dropdown-item" href="#">Наша Компания</a>
+                                    <a class="dropdown-item" href="http://127.0.0.1:8000/team">Наша Команда</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="course">Учебный центр</a>
                                 <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="http://127.0.0.1:8000/course">Учебный центр</a>
                                     <a class="dropdown-item" href="contact-1.html">Компьютерная грамотность</a>
                                     <a class="dropdown-item" href="contact-1.html">Курсы web-программирование </a>
                                     <a class="dropdown-item" href="contact-2.html">Графический дизайн</a>
@@ -119,8 +67,9 @@
                                 </div>
                             </li>
                              <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="/team" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Услуги</a>
+                                <a class="nav-link dropdown-toggle" href="service" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Услуги</a>
                                 <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="http://127.0.0.1:8000/service">Услуги</a>
                                     <a class="dropdown-item" href="contact-1.html">Автоматизация бизнеса</a>
                                     <a class="dropdown-item" href="contact-1.html">Создание сайтов </a>
                                     <a class="dropdown-item" href="contact-2.html">Поддержка сайтов</a>
@@ -128,8 +77,8 @@
                                     <a class="dropdown-item" href="contact-2.html">Разработка мобильных приложений</a>
                                 </div>
                             </li>
-                            <li class="nav-item has_mega-lg dropdown">
-                                <a class="nav-link" href="#">Наши Проекты</a>
+                            <li class="nav-item  dropdown">
+                                <a class="nav-link" href="">Наши Проекты</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="contact"  aria-haspopup="true" aria-expanded="false">Контакты</a>
@@ -315,6 +264,18 @@
     <script src="{% static 'theme_assets/js/map.js' %}"></script>
     <script src="{% static 'theme_assets/js/revolution.slider.init.js' %}"></script>
     <!-- endinject-->
+
+    <script>
+
+        $('.js-menu-item').click(function(){
+            var clicked_button = $(this).data('id');
+            $('.js-service-item').hide();
+            $('.js-service-item[data-id="'+ clicked_button +'"]').show();
+
+        return false;
+    })
+
+    </script>
 </body>
 
 </html>

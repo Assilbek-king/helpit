@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+    <section class="breadcrumb_area breadcrumb2 bgimage biz_overlay">
+        <div class="bg_image_holder">
+            <img src="{% static 'image/foto1/breadbg.jpg' %}" alt="">
+        </div>
+        <div class="container content_above">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="breadcrumb_wrapper d-flex flex-column align-items-center">
+                        <h4 class="page_title">{{ service_items.service.title }}</h4>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb m-bottom-30">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/service">Услуги</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ service_items.service.title }}</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div><!-- ends: .row -->
+        </div>
+    </section><!-- ends: .breadcrumb_area -->
+
+
+    <section class="service-tab-wrapper section-padding">
+        <div class="tab service--tabs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 sidebar">
+                        <div class="tab_nav tab_nav2 m-bottom-50">
+                            <div class="nav flex-column" id="tab_nav1" role="tablist" aria-orientation="vertical">
+                                {% for si in serviceitems %}
+                                    {% if service_items.service.id == si.service.id %}
+                                <a class="nav-link active "  href="/service/{{ si.id }}"
+                                   role="tab" aria-controls="tab1" aria-selected="true">{{ si.title }}</a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div><!-- ends: .tab_nav -->
+
+                        <div class="cta-widget m-bottom-50">
+                            <h6>Any Question?</h6>
+                            <div class="content">
+                                <p class="call-us">
+                                    <span>Call Us:</span>
+                                    <span><i class="la la-headphones"></i> +7(708) 573 96 56</span>
+                                </p>
+                                <p class="message-us">
+                                    <span>Or</span>
+                                    <a href="" class="btn btn-primary btn-sm btn-icon icon-left"><i class="la la-envelope"></i> Send Message</a>
+                                </p>
+                            </div>
+                        </div><!-- ends: .cta-widget -->
+
+                    </div><!-- ends: .col-lg-3 -->
+
+                    <div class="col-lg-9 js-service-item" data-id="{{ service_items.id }}">
+                        <div class="tab-content" id="tabContent1">
+                            <div class="tab-pane fade show active"  role="tabpanel" aria-labelledby="tab1">
+                                <div class="contents-1">
+                                    <div class="m-bottom-30">
+                                        <div class="divider divider-simple text-left">
+                                            <h3>{{ service_items.title }}</h3>
+                                        </div>
+                                    </div>
+                                    <p>{{ service_items.mini_description }}</p>
+                                </div>
+                                <div class="tab-image m-bottom-50">
+                                    <img src="/media/{{ service_items.image }}" alt="Images the foolda">
+                                </div>
+                                <div class="contents-2 m-top-60">
+
+                                </div>
+                            </div><!-- ends: .tab-pane -->
+                        </div>
+                        <section class="list-types">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 ">
+
+                                    <h6 class="color-primary">Заказав {{ service_items.title }} вы получаете:</h6>
+                                        <ul class="bullet--list2">
+                                            {% for is in item_services %}
+                                                {% if service_items.id == is.serviceitem.id %}
+                                        <li class="bullet_list">{{ is.mini_description }}</li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul><!-- ends: .bullet--list2 -->
+                                    </div><!-- ends: .col-lg-6 -->
+                                </div>
+                            </div>
+                        </section>
+                    </div><!-- ends: .col-lg-9 -->
+
+                </div>
+
+            </div>
+        </div><!-- ends: .service--tabs -->
+    </section><!-- ends: .service-tab-wrapper -->
+
+
+
+
+{% endblock %}

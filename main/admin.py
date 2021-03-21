@@ -62,5 +62,36 @@ class SocialAdmin(admin.ModelAdmin):
 admin.site.register(Social,SocialAdmin)
 
 
+class ServiceAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Service,ServiceAdmin)
 
 
+class ServiceitemAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Serviceitem,ServiceitemAdmin)
+
+
+class ExperienceAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Experience,ExperienceAdmin)
+
+
+class DeveloperAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Developer,DeveloperAdmin)
+
+
+class ItemserviceAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Itemservice,ItemserviceAdmin)
+
+
+class Experience_studentAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Experience_student,Experience_studentAdmin)

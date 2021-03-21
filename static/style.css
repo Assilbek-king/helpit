@@ -4503,7 +4503,7 @@ h1, h2, h3, h4, h5, h6 {
   transform-style: preserve-3d;
   position: relative;
   width: 100%;
-  min-height: 22rem;
+  min-height: 16rem;
 }
 
 .flip-card .flip-front, .flip-card .flip-back {

@@ -52,17 +52,33 @@ class Succes(models.Model):
     def __str__(self):
         return self.title
 
-class Team_member(models.Model):
+class Developer(models.Model):
     title = models.CharField(max_length=300)
-    image = models.ImageField(upload_to='upload')
-    mini_description = models.CharField(max_length=300)
-    description = models.CharField(max_length=1000)
-    rating = models.IntegerField(default=0)
-    is_main = models.IntegerField(default=0)
     status = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.title
+            return self.title
+
+
+class Team_member(models.Model):
+    last_name = models.CharField(max_length=300, default='')
+    first_name = models.CharField(max_length=300, default='')
+    title = models.CharField(max_length=300, blank=True)
+    developer = models.ForeignKey(Developer, on_delete=models.CASCADE, default=0)
+    image = models.ImageField(upload_to='upload')
+    mini_description = models.CharField(max_length=300)
+    description = models.TextField(default='')
+    rating = models.IntegerField(default=0)
+    is_main = models.IntegerField(default=0)
+    status = models.IntegerField(default=0)
+    instagram = models.CharField(max_length=300, blank=True, default='')
+    telegram = models.CharField(max_length=300, blank=True, default='')
+    whatsapp = models.CharField(max_length=300, blank=True, default='')
+    facebook = models.CharField(max_length=300, blank=True, default='')
+    email = models.EmailField(max_length=64, blank=True, default='')
+
+    def __str__(self):
+        return self.last_name + "  " + self.first_name
 
 
 class Client(models.Model):
@@ -91,7 +107,7 @@ class Student(models.Model):
     title = models.CharField(max_length=300, blank=True)
     image = models.ImageField(upload_to='upload')
     mini_description = models.CharField(max_length=300)
-    description = models.CharField(max_length=1000)
+    description = models.TextField()
     rating = models.IntegerField(default=0)
     status = models.IntegerField(default=0)
     instagram = models.CharField(max_length=300, blank=True)
@@ -124,3 +140,51 @@ class Social(models.Model):
 
     def __str__(self):
         return self.title
+
+class Service(models.Model):
+    title = models.CharField(max_length=300,)
+    logo = models.ImageField(upload_to='upload', blank=True)
+    description = models.TextField()
+    status = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.title
+
+
+class Serviceitem(models.Model):
+    title = models.CharField(max_length=300,)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, blank=True)
+    image = models.ImageField(upload_to='upload', blank=True, default='')
+    icon = models.CharField(max_length=600, default='la la-bar-chart')
+    mini_description = models.TextField(blank=True)
+    status = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.title
+
+
+class Experience(models.Model):
+    title = models.CharField(max_length=300)
+    quality = models.IntegerField(default=0)
+    member = models.ForeignKey(Team_member, on_delete=models.CASCADE)
+    status = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.title
+
+class Experience_student(models.Model):
+    title = models.CharField(max_length=300)
+    quality = models.IntegerField(default=0)
+    member = models.ForeignKey(Student, on_delete=models.CASCADE)
+    status = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.title
+
+class Itemservice(models.Model):
+    serviceitem = models.ForeignKey(Serviceitem,  on_delete=models.CASCADE)
+    mini_description = models.CharField(max_length=1000)
+    status = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.serviceitem.title
