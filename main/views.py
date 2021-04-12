@@ -2,7 +2,6 @@ from django.shortcuts import render
 from main.models import *
 from math import ceil
 from datetime import datetime
-# Create your views here.
 
 
 def indexHandler(request):
