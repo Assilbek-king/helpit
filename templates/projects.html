@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+    <section class="breadcrumb_area breadcrumb2 bgimage biz_overlay">
+        <div class="bg_image_holder">
+            <img src="{% static 'image/foto1/breadbg.jpg' %}" alt="">
+        </div>
+        <div class="container content_above">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="breadcrumb_wrapper d-flex flex-column align-items-center">
+                        <h4 class="page_title">Наши Проекты</h4>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb m-bottom-30">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Наши Проекты</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div><!-- ends: .row -->
+        </div>
+    </section><!-- ends: .breadcrumb_area -->
+    <section class="project-list-wrapper section-padding section-bg">
+        <div class="container">
+            <div class="row">
+                {% for pr in projects %}
+                <div class="col-lg-12">
+                    <div class="project-list">
+                        <div class="card card-shadow d-flex">
+                            <figure>
+                                <img src="/media/{{ pr.logo }}" alt="">
+                            </figure>
+                            <div class="card-body">
+                                <p class="card-subtitle">{{ pr.member.last_name }} {{ pr.member.first_name }}</p>
+                                <h5><a href="">{{ pr.title }}</a></h5>
+                                <p class="card-text">{{ pr.mini_description }}</p>
+                                <a href="{{ pr.link }}" class="btn btn-outline-secondary">Подробная</a>
+                            </div>
+                        </div><!-- end: .card -->
+                    </div><!-- end: .project-list -->
+                </div><!-- ends: .col-lg-12 -->
+                {% endfor %}
+            </div>
+            <div class="project-pagination m-top-40">
+                <div class="pagination-area">
+                    <nav aria-label="Page navigation pagination-left">
+                        <ul class="pagination justify-content-center">
+                            {% if prev_page > 0 %}
+                            <li class="page-item"><a class="page-link" href="/project/?page={{ prev_page }}&limit={{ limit }}"><</a></li>
+                            {% endif %}
+
+                            <li class="page-item "><a class="page-link" href="/project/?page={{ current_page }}&limit={{ limit }}">{{ current_page }}</a></li>
+
+                            {% if next_page > 0 %}
+                            <li class="page-item"><a class="page-link" href="/project/?page={{ next_page }}&limit={{ limit }}">></a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div><!-- ends: .pagination-wrapper -->
+            </div>
+        </div>
+    </section><!-- ends: section -->
+{% endblock %}

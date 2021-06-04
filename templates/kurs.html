@@ -1,4 +1,6 @@
-python
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
 <section class="breadcrumb_area breadcrumb2 bgimage biz_overlay">
         <div class="bg_image_holder">
             <img src="{% static 'image/foto1/breadbg.jpg' %}" alt="">
@@ -113,14 +115,22 @@ python
                             <div class="filtr-item col-lg-4 col-md-6" data-uk-filter="{{ co.catalog.id }}" data-grid-prepared="true" style="position: absolute; box-sizing: border-box; top: 0px; opacity: 1; left: 0px;">
                                 <div class="card card-shadow card-one">
                                     <figure>
-                                        <img src="/media/{{ co.logo }}" alt="">
+                                        <img src="/media/{{ co.logo }}" style="height: 230px" alt="">
                                         <figcaption>
                                             <a href=""><i class="la la-link"></i></a>
                                         </figcaption>
                                     </figure>
+                                    <style>
+                                                .webkit{
+                                                    overflow: hidden;
+                                                    display: -webkit-box;
+                                                    -webkit-line-clamp: 2;
+                                                    -webkit-box-orient: vertical;
+                                                }
+                                            </style>
                                     <div class="card-body">
                                         <p class="card-subtitle color-secondary">{{ co.title }}</p>
-                                        <h6><a href="">{{ co.mini_description }}</a></h6>
+                                        <h6><a href="" class="webkit">{{ co.mini_description }}</a></h6>
                                     </div>
                                 </div><!-- Ends: .card -->
                             </div><!-- ends: .col-lg-4 -->
@@ -131,4 +141,4 @@ python
             </div>
         </div><!-- ends: .filter-wrapper -->
     </section>
- {% endblock %}
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from main.models import *
 from math import ceil
+from django.http import JsonResponse
 from datetime import datetime
 
 
@@ -9,7 +10,7 @@ def indexHandler(request):
     contacts = Contact.objects.all()
     clients = Client.objects.all()[:3]
     student = Student.objects.all()
-    courses = Course.objects.all()[:3]
+    courses = Course.objects.all()
     catalogs = Catalog.objects.all()
 
     return render(request, 'index12.html', {'sponsors':sponsors,
@@ -79,3 +80,45 @@ def serviceitemHandler(request, serviceitem_id):
                                          'serviceitems': serviceitems,
                                          'item_services': item_services,
                                           })
+
+
+def projectHandler(request):
+    limit = int(request.GET.get('limit', 4))
+    current_page = int(request.GET.get('page', 1))
+    stop = current_page * limit
+    start = stop - limit
+
+    projects = Project.objects.filter()[start:stop]
+    total = Project.objects.count()
+
+    prev_page = current_page - 1
+    next_page = 0
+    if total > stop:
+        next_page = current_page + 1
+
+    return render(request, 'projects.html', {
+        'current_page': current_page,
+        'prev_page': prev_page,
+        'next_page': next_page,
+        'total': total,
+        'limit': limit,
+        'projects': projects
+
+    })
+
+
+
+def requestHandler(request):
+    if request.POST:
+        action = request.POST.get('action', '')
+        if action == 'request':
+            newrequest = Request()
+            newrequest.fio = request.POST.get('fio','')
+            newrequest.age = request.POST.get('age','')
+            newrequest.phone = request.POST.get('phone', '')
+            newrequest.save()
+
+            return JsonResponse({'success': True, 'errorMsg': '', '_success': True})
+
+    return render(request, 'request.html', {
+    })

@@ -95,3 +95,13 @@ class Experience_studentAdmin(admin.ModelAdmin):
     pass
 
 admin.site.register(Experience_student,Experience_studentAdmin)
+
+class ProjectAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Project,ProjectAdmin)
+
+class RequestAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Request,RequestAdmin)

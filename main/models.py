@@ -92,6 +92,21 @@ class Client(models.Model):
     def __str__(self):
         return self.title
 
+
+class Project(models.Model):
+    title = models.CharField(max_length=300, blank=True)
+    logo = models.ImageField(upload_to='upload', blank=True)
+    mini_description = models.CharField(max_length=500)
+    link = models.TextField(blank=True)
+    description = models.TextField()
+    date = models.DateTimeField(blank=True)
+    member = models.ForeignKey(Team_member, on_delete=models.CASCADE, blank=True)
+
+    def __str__(self):
+        return self.title
+
+
+
 class Gallery(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     title = models.CharField(max_length=300, blank=True)
@@ -188,3 +203,12 @@ class Itemservice(models.Model):
 
     def __str__(self):
         return self.serviceitem.title
+
+class Request(models.Model):
+    fio = models.CharField(max_length=1000)
+    age = models.IntegerField(default=0)
+    phone = models.CharField(max_length=20,default=0)
+
+    def __str__(self):
+        return self.fio
+
